@@ -8,12 +8,13 @@ on:
 jobs:
     upgrade:
         name: Upgrade V8
-        runs-on: ubuntu-18.04
+        runs-on: ubuntu-22.04
         steps:
             - name: Checkout
               uses: actions/checkout@v2
               with:
                   submodules: true
+                  lfs: true
                   fetch-depth: 0
             - uses: actions/setup-python@v2
               with:
@@ -33,7 +34,7 @@ jobs:
                 echo ::set-output name=pr_commit_message::"Upgrade V8 binaries for $(cat deps/v8_version) version"
                 echo ::set-output name=pr_body::"Auto-generated pull request to upgrade V8 binary for $(cat deps/v8_version) version"
             - name: Create PR
-              uses: peter-evans/create-pull-request@v3
+              uses: peter-evans/create-pull-request@v7
               with:
                 commit-message: ${{steps.pr_metadata.outputs.pr_commit_message}}
                 branch: ${{steps.pr_metadata.outputs.pr_branch}}

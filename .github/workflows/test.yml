@@ -23,6 +23,8 @@ jobs:
         go-version: ${{ matrix.go-version }}
     - name: Checkout
       uses: actions/checkout@v2
+      with:
+        lfs: true
     - name: Go Test
       env:
         CGO_CXXFLAGS: "-Werror"

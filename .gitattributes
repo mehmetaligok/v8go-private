@@ -1,0 +1,1 @@
+deps/*/libv8.a filter=lfs diff=lfs merge=lfs -text
