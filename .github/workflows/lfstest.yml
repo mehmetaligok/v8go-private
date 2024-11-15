@@ -22,7 +22,7 @@ jobs:
       - name: Create LFS tracked file
         run: |
           git lfs track "lfstest/*.json"
-          date +%s > lfstest/900000_records.json
+          date +%s > lfstest/dummy.json
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         with:
